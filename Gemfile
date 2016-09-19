@@ -42,6 +42,13 @@ group :development, :test do
   gem 'rspec-rails' # add this line
 end
 
+group :test do
+  gem 'capybara'
+  gem 'rspec-example_steps'
+  gem 'launchy'
+  gem 'selenium-webdriver'
+end
+
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
