@@ -24,6 +24,14 @@
     <%= f.text_field :postal_code %>
   </div>
   <div class="field">
+    <%= f.label :longitude %><br>
+    <%= f.text_field :longitude %>
+  </div>
+  <div class="field">
+    <%= f.label :latitude %><br>
+    <%= f.text_field :latitude %>
+  </div>
+  <div class="field">
     <%= f.label :state %><br>
     <%= f.text_field :state %>
   </div>
@@ -31,10 +39,18 @@
     <%= f.label :country %><br>
     <%= f.text_field :country %>
   </div>
+
   <div class="field">
+    <%= select(:apartment, :owner_id, @owners_for_select) %>
+  </div>
+
+
+
+  <!-- <div class="field">
     <%= f.label :owner_id %><br>
     <%= f.text_field :owner_id %>
-  </div>
+  </div> -->
+
   <div class="actions">
     <%= f.submit %>
   </div>

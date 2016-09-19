@@ -8,6 +8,8 @@
       <th>Street</th>
       <th>City</th>
       <th>Postal code</th>
+      <th>Latitude</th>
+      <th>Longitude</th>
       <th>State</th>
       <th>Country</th>
       <th>Owner</th>
@@ -21,9 +23,11 @@
         <td><%= apartment.street %></td>
         <td><%= apartment.city %></td>
         <td><%= apartment.postal_code %></td>
+        <td><%= apartment.latitude %></td>
+        <td><%= apartment.longitude %></td>
         <td><%= apartment.state %></td>
         <td><%= apartment.country %></td>
-        <td><%= apartment.owner %></td>
+        <td><%= apartment.owner.name %></td>
         <td><%= link_to 'Show', apartment %></td>
         <td><%= link_to 'Edit', edit_apartment_path(apartment) %></td>
         <td><%= link_to 'Destroy', apartment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
