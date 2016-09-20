@@ -14,7 +14,7 @@ class ApartmentsController < ApplicationController
       @pindrop = Gmaps4rails.build_markers(@apartments) do |apartment, marker|
         marker.lat apartment.latitude
         marker.lng apartment.longitude
-        marker.infowindow apartment.street
+        marker.infowindow apartment.full_address
       end
   end
 
