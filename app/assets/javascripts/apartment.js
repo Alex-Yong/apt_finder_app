@@ -1,7 +1,6 @@
 function showLocations(data) {
 if (navigator.geolocation) {
   navigator.geolocation.getCurrentPosition(function(position) {
-   alert("alert");
    data[data.length] = {
     lat: position.coords.latitude,
     lng: position.coords.longitude,

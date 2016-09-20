@@ -96,6 +96,6 @@ end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def apartment_params
-      params.require(:apartment).permit(:street, :city, :postal_code, :state, :country, :owner_id)
+      params.require(:apartment).permit(:street, :city, :postal_code, :state, :country, :owner_id, :image)
     end
 end

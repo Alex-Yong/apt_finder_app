@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160919231844) do
+ActiveRecord::Schema.define(version: 20160920230503) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,10 +23,14 @@ ActiveRecord::Schema.define(version: 20160919231844) do
     t.string   "state"
     t.string   "country"
     t.integer  "owner_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
     t.float    "latitude"
     t.float    "longitude"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   add_index "apartments", ["owner_id"], name: "index_apartments_on_owner_id", using: :btree
@@ -39,5 +43,16 @@ ActiveRecord::Schema.define(version: 20160919231844) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "users", force: :cascade do |t|
+    t.string   "name"
+    t.string   "email"
+    t.integer  "apartment_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "users", ["apartment_id"], name: "index_users_on_apartment_id", using: :btree
+
   add_foreign_key "apartments", "owners"
+  add_foreign_key "users", "apartments"
 end
