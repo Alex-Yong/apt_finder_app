@@ -5,7 +5,10 @@ class Apartment < ActiveRecord::Base
   def full_address
     @street = street
     @city = city
-    @full_address = (@street +" "+@city)
+    @state = state
+    @postal_code = postal_code
+    @country = country
+    @full_address = (@street +" "+@city+ " "+@state+" "+@country)
   end
 
   geocoded_by :full_address

@@ -5,18 +5,33 @@ class ApartmentsController < ApplicationController
   # GET /apartments.json
   def index
     @apartments = Apartment.all
-  end
-
-  # GET /apartments/1
-  # GET /apartments/1.json
-  def show
-    @apartments = Apartment.find(params[:id]) #@apartments may also be found using the set_apartment method provided by scaffolding
       @pindrop = Gmaps4rails.build_markers(@apartments) do |apartment, marker|
         marker.lat apartment.latitude
         marker.lng apartment.longitude
         marker.infowindow apartment.full_address
       end
   end
+
+  # GET /apartments/1
+  # GET /apartments/1.json
+  def show
+    @apartments = Apartment.find(params[:id]) #@apartments may also be found using the set_apartment method provided by scaffolding
+    @pindrop = Gmaps4rails.build_markers(@apartments) do |apartment, marker|
+      marker.lat apartment.latitude
+      marker.lng apartment.longitude
+      marker.infowindow apartment.full_address
+    end
+  end
+
+  def map_location
+  @apartment = Apartment.find(params[:apartment_id])
+  @hash = Gmaps4rails.build_markers(@apartment) do |apartment, marker|
+    marker.lat apartment.latitude
+    marker.lng apartment.longitude
+    marker.infowindow apartment.full_address
+  end
+  render json: @hash.to_json
+end
 
   # GET /apartments/new
   def new
