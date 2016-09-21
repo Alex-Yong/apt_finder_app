@@ -1,5 +1,6 @@
 class ApartmentsController < ApplicationController
   before_action :set_apartment, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
 
   # GET /apartments
   # GET /apartments.json
@@ -35,10 +36,11 @@ end
 
   # GET /apartments/new
   def new
-    @apartment = Apartment.new
+    @apartment = current_user.apartments.build
     @owners_for_select = Owner.all.map do |owner|
     [owner.name, owner.id]
     end
+
   end
 
   # GET /apartments/1/edit
@@ -51,7 +53,7 @@ end
   # POST /apartments
   # POST /apartments.json
   def create
-    @apartment = Apartment.new(apartment_params)
+    @apartment = current_user.apartments.build(apartment_params)
 
     respond_to do |format|
       if @apartment.save

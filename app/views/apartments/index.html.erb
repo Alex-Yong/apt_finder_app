@@ -2,7 +2,7 @@
 
 <h1>Listing Apartments</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>Street</th>
@@ -13,6 +13,7 @@
       <th>State</th>
       <th>Country</th>
       <th>Owner</th>
+      <th>User</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -28,10 +29,13 @@
         <td><%= apartment.state %></td>
         <td><%= apartment.country %></td>
         <td><%= apartment.owner.name %></td>
+        <td><%= apartment.user.email %></td>
         <td><%= image_tag apartment.image.url(:thumb) %></td>
         <td><%= link_to 'Show', apartment %></td>
+        <% if apartment.user == current_user %>
         <td><%= link_to 'Edit', edit_apartment_path(apartment) %></td>
         <td><%= link_to 'Destroy', apartment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
@@ -50,12 +54,12 @@ handler.buildMap({
     markers = handler.addMarkers(<%=raw @pindrop.to_json %>);
     handler.bounds.extendWith(markers);
     handler.fitMapToBounds();
-    handler.getMap();
+   handler.getMap();
+
   }
 );
 </script>
 
-<button type="button"><a href="/users">Profile Page</a></button>
 
 
 <%= link_to 'New Apartment', new_apartment_path %>

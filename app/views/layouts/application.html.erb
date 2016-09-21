@@ -38,6 +38,7 @@
           <li class="active"><a href="#">Home</a></li>
           <li><a href="#about">About</a></li>
           <li><a href="#contact">Contact</a></li>
+          <li><a data-method:"delete", href="/users/sign_out", rel="nofollow">Sign out</a></li>
         </ul>
       </div>
     </div>
@@ -49,6 +50,13 @@
         <%= msg %>
       <% end %>
     <% end %>
+
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    <%= link_to "Sign up", new_user_registration_path %>
+    <%= link_to "Sign in", new_user_session_path %>
+    <%= link_to "Logout", destroy_user_session_path, :method => :delete %>
+
 
     <%= yield %>
   </div>
