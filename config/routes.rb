@@ -1,17 +1,17 @@
 Rails.application.routes.draw do
-  devise_for :users
-  resources :apartments
-  resources :owners
+  devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks"}
+
+  # resources :owners
 
   resources :apartments do
-  # GET /apartments/:id/map_locations
-  get 'map_location'        # Add this and the "do" "end"
+    # GET /apartments/:id/map_locations
+    get 'map_location'        # Add this and the "do" "end"
   end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'owners#index'
+  root 'apartments#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
