@@ -53,7 +53,9 @@
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
 
-    Current User:<%= current_user %>
+    Current User:  <% if !current_user.nil?%>
+        <%= current_user.email + ' (' + current_user.roles.pluck(:name).join(",") + ')'%>
+      <%end%>
     <br/>
 
     <%= link_to "Sign up", new_user_registration_path %>

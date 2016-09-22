@@ -27,6 +27,11 @@ gem 'bootstrap-generators'
 gem 'geocoder'
 gem 'gmaps4rails'
 
+gem 'cancancan'
+
+gem 'rolify'
+
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

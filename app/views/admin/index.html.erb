@@ -1,0 +1,33 @@
+<div class="page-header">
+  <h1>Admin#index</h1>
+</div>
+<h1>Users</h1>
+<table class="table">
+  <thead>
+    <thead>
+      <tr>
+        <th>Email</th><th>Role</th><th></th><th></th>
+      </tr>
+    </thead>
+  </thead>
+  <tbody>
+  <% @users.each do |user| %>
+    <tr>
+      <td><%= user.email %></td>
+      <% if !user.roles.empty?%>
+      <td><%= user.roles.first.name %></td>
+      <% end %>
+      <td>
+        <%= form_tag("/admin/" + user.id.to_s + "?role=admin", method: :PUT) do %>
+          <input type="submit" value="Make Admin"/>
+        <% end %>
+      </td>
+      <td>
+        <%= form_tag("/admin/destroy/" + user.id.to_s, method: :PUT) do %>
+          <input type="submit" value="remove role"/>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
