@@ -31,6 +31,10 @@ gem 'cancancan'
 
 gem 'rolify'
 
+gem 'rails_12factor'
+
+ruby '2.2.2'
+
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
